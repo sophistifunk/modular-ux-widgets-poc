@@ -1,0 +1,16 @@
+{
+  "__extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+      "object-literal-sort-keys": false,
+      "array-type": false,
+      "interface-name": false,
+      "interface-over-type-literal": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*",
+      "**/example-widget/**/*.*"
+    ]
+  }
+}

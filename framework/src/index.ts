@@ -1,0 +1,2 @@
+export {UXWidget} from './WidgetComponent';
+

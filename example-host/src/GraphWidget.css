@@ -1,0 +1,339 @@
+/* Copied from Blue Ocean and de-LESSed by hand for PoC purposes */
+
+.PipelineGraph-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
+
+.PipelineGraph-container .PipelineGraph {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+    Styles for the pipeline result status displays used in both build/branch lists, and
+    within the PipelineGraph component.
+*/
+
+/*
+
+    TODO: Resolve these:
+
+    brand-danger-lite      = #D54C53         
+	brand-grey-lite        = #949393           
+	brand-info-lite        = #4C9BD5           
+	brand-paused-lite      = #24B0D5         
+	brand-primary          = #4A90E2             
+	brand-success-lite     = #8CC04F        
+	brand-unknown-lite     = #D54CC4        
+	brand-warning-lite     = #F6B44B        
+	gray-lighter           = #e4e4e4              
+	progress-bar-color     = #1D7DCF        
+	progress-bg            = #a7c7f2               
+	progress-pulse-color   = #4C9BD5      
+	text-color             = #444                
+
+*/
+
+.result-status-glyph {
+    stroke: none;
+    fill: #fff;
+}
+
+.svgResultStatus.no-background .circle-bg {
+    opacity: 0;
+}
+
+.svgResultStatus {
+    transform: translateZ(0);
+ }
+
+.svgResultStatus circle.success {
+    stroke: none;
+    fill: #8CC04F;
+}
+
+.svgResultStatus circle.failure {
+    stroke: none;
+    fill: #D54C53;
+}
+
+.svgResultStatus circle.unstable {
+    stroke: none;
+    fill: #F6B44B;
+}
+
+.svgResultStatus circle.aborted {
+    stroke: none;
+    fill: #949393;
+}
+
+.svgResultStatus circle.paused {
+    stroke: none;
+    fill: #24B0D5;
+}
+
+.svgResultStatus circle.unknown {
+    stroke: none;
+    fill: #D54CC4;
+}
+
+.jdl-table td .svgResultStatus {
+    vertical-align: middle;
+}
+
+.progress-spinner.running circle {
+    fill: none;
+    stroke: #a7c7f2;
+}
+
+.progress-spinner.running path {
+    fill: none;
+    stroke: #1D7DCF;
+}
+
+.progress-spinner.pc-over-100 circle {
+    fill: none;
+    stroke: #1D7DCF;
+}
+
+.progress-spinner.pc-over-100 path {
+    fill: none;
+    stroke: #F6B44B;
+}
+
+    .inverse .progress-spinner.running circle {
+        fill: none;
+        stroke: #4C9BD5;
+    }
+
+    .inverse .progress-spinner.running path {
+        fill: none;
+        stroke: white;
+    }
+
+    .inverse .progress-spinner.running circle.inner {
+        fill: #4C9BD5;
+        stroke: #4C9BD5;
+    }
+
+.progress-spinner.running.spin {
+    animation: progress-spinner-rotate 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes progress-spinner-rotate {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+.progress-spinner circle.inner,
+.progress-spinner.running.spin circle.inner {
+  display: none;
+  animation: progress-spinner-pulsate 1.2s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+.progress-spinner.running circle.inner {
+    display: block;
+    fill: #4C9BD5;
+    stroke: #4C9BD5;
+}
+
+@keyframes progress-spinner-pulsate {
+    0% { transform: scale(0.1, 0.1); opacity: 0.0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.2, 1.2); opacity: 0.0; }
+}
+
+.progress-spinner.queued circle {
+    fill: none;
+    stroke: #949393;
+}
+
+.progress-spinner.queued circle.inner {
+    display: block;
+    fill: #949393;
+    stroke: #949393;
+}
+
+.empty-state-content svg {
+    vertical-align: middle;
+}
+
+.empty-state-content > span {
+    padding-left: 15px;
+}
+.progress-spinner.queued path {
+    fill: none;
+    stroke: none;
+}
+
+.progress-spinner.not_built circle,
+.progress-spinner.skipped circle {
+    fill: none;
+    stroke: #949393;
+} 
+
+.progress-spinner.not_built path,
+.progress-spinner.skipped   path {
+    fill: none;
+    stroke: none;
+}
+
+.result-bg.success {
+    background:#8CC04F;
+    border-bottom: 1px solid fade(darken(#8CC04F, 10%), 50%);
+}
+
+.result-bg.failure {
+    background:#D54C53;
+    border-bottom: 1px solid fade(darken(#D54C53, 10%), 50%);
+}
+
+.result-bg.not_built,
+.result-bg.aborted,
+.result-bg.queued {
+    background:#949393;
+    border-bottom: 1px solid fade(darken(#949393, 10%), 50%);
+}
+
+.result-bg.running {
+    background:#1D7DCF;
+    border-bottom: 1px solid fade(darken(#1D7DCF, 10%), 50%);
+}
+
+.result-bg.unstable {
+    background:#F6B44B;
+    border-bottom: 1px solid fade(darken(#F6B44B, 10%), 50%);
+}
+
+.result-bg.paused {
+    background:#24B0D5;
+    border-bottom: 1px solid fade(darken(#24B0D5, 10%), 50%);
+}
+
+.result-bg.unknown {
+    background:#D54CC4;
+    border-bottom: 1px solid fade(darken(#D54CC4, 10%), 50%);
+}
+
+.result-item + .result-item .result-item-head {
+        border-top: 0;
+}
+
+.result-item-head {
+    display:flex;
+    align-items:stretch;
+    cursor:pointer;
+    border: solid 1px #e4e4e4;
+}
+
+.result-item-icon {
+    display:flex;
+    align-items:flex-start;
+    margin: -1px 0 -1px -1px;
+    transform: translateZ(0);
+
+    
+}
+
+.result-item-icon .spinAnimation {
+    animation: progress-spinner-rotate 4s linear;
+    animation-iteration-count: infinite;
+}
+
+.result-item-title {
+    flex: 1 1 auto;
+    display:flex;
+    align-items:center;
+    min-width: 0;
+}
+
+.result-item-extra-info {
+    padding-right: 0.6em;
+}
+
+.result-item-label {
+    flex: 1 1 auto;
+}
+
+.result-item-head:hover {
+    background: #f8f8f8;
+}
+
+.result-item-expando {
+    cursor: pointer;
+}
+
+.expando-glyph {
+    transform:rotate(0deg);
+    transition: transform 150ms ease-in;
+    fill: #444;
+}
+
+.result-item-expando.expanded .expando-glyph {
+    transform: rotate(90deg);
+    transition: transform 150ms ease-in;
+}
+
+.result-item-expando.disabled .expando-glyph {
+    opacity:0.3;
+}
+
+
+.slide-down-enter, .slide-down-appear {
+    max-height:0;
+    overflow:hidden;
+}
+
+.slide-down-enter.slide-down-enter-active, .slide-down-appear.slide-down-appear-active {
+    max-height:600px;
+    transition: all 300ms ease-in;
+}
+
+.slide-down-leave {
+    max-height:600px;
+    overflow:hidden
+}
+
+.slide-down-leave.slide-down-leave-active {
+    max-height:0;
+    transition: all 300ms ease-out;
+}
+
+
+.pipeline-connector {
+    stroke: #949393;
+}
+
+.pipeline-node-terminal {
+    fill: #949393;
+}
+
+.pipeline-connector-skipped {
+    stroke: #949393;
+    stroke-opacity: 0.25;
+}
+
+.pipeline-big-label {
+}
+
+.pipeline-small-label {
+    font-size: 80%;
+}
+
+.pipeline-big-label.selected,
+.pipeline-small-label.selected {
+    font-weight:bold;
+}
+
+.pipeline-selection-highlight circle {
+    fill: none;
+    stroke: #4A90E2;
+}
+

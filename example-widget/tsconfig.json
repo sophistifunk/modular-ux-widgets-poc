@@ -2,18 +2,18 @@
     "compilerOptions": {
         "module": "es6",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "es6",
         "declaration": true,
         "outDir": "./dist",
         "preserveConstEnums": true,
         "forceConsistentCasingInFileNames": true,
-        "jsx": "preserve",
+        "jsx": "react",
         "experimentalDecorators":true,
         "strict": true,
         "sourceMap": true
     },
     "include": [
-        "src/index.ts"
+        "src/main/index.ts"
     ],
     "exclude": [
         "node_modules"

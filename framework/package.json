@@ -1,7 +1,12 @@
 {
   "name": "framework",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "dist": "rm -rf dist && tsc",
+    "dist:watch": "rm -rf dist && tsc -w",
+    "prepublishOnly": "echo \"TODO: No publish yet\" && exit 1"
+  },
   "license": "MIT",
   "private": true,
   "devDependencies": {
