@@ -1,0 +1,197 @@
+/* Copied from Blue Ocean and de-LESSed by hand for PoC purposes */
+
+.PipelineGraph-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
+
+.PipelineGraph-container .PipelineGraph {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+    Styles for the pipeline result status displays used in both build/branch lists, and
+    within the PipelineGraph component.
+*/
+
+.result-status-glyph {
+    stroke: none;
+    fill: #fff;
+}
+
+.svgResultStatus.no-background .circle-bg {
+    opacity: 0;
+}
+
+.svgResultStatus {
+    transform: translateZ(0);
+ }
+
+.svgResultStatus circle.success {
+    stroke: none;
+    fill: #8CC04F;
+}
+
+.svgResultStatus circle.failure {
+    stroke: none;
+    fill: #D54C53;
+}
+
+.svgResultStatus circle.unstable {
+    stroke: none;
+    fill: #F6B44B;
+}
+
+.svgResultStatus circle.aborted {
+    stroke: none;
+    fill: #949393;
+}
+
+.svgResultStatus circle.paused {
+    stroke: none;
+    fill: #24B0D5;
+}
+
+.svgResultStatus circle.unknown {
+    stroke: none;
+    fill: #D54CC4;
+}
+
+.jdl-table td .svgResultStatus {
+    vertical-align: middle;
+}
+
+.progress-spinner.running circle {
+    fill: none;
+    stroke: #a7c7f2;
+}
+
+.progress-spinner.running path {
+    fill: none;
+    stroke: #1D7DCF;
+}
+
+.progress-spinner.pc-over-100 circle {
+    fill: none;
+    stroke: #1D7DCF;
+}
+
+.progress-spinner.pc-over-100 path {
+    fill: none;
+    stroke: #F6B44B;
+}
+
+.inverse .progress-spinner.running circle {
+    fill: none;
+    stroke: #4C9BD5;
+}
+
+.inverse .progress-spinner.running path {
+    fill: none;
+    stroke: white;
+}
+
+.inverse .progress-spinner.running circle.inner {
+    fill: #4C9BD5;
+    stroke: #4C9BD5;
+}
+
+.progress-spinner.running.spin {
+    animation: progress-spinner-rotate 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes progress-spinner-rotate {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+.progress-spinner circle.inner,
+.progress-spinner.running.spin circle.inner {
+  display: none;
+  animation: progress-spinner-pulsate 1.2s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+.progress-spinner.running circle.inner {
+    display: block;
+    fill: #4C9BD5;
+    stroke: #4C9BD5;
+}
+
+@keyframes progress-spinner-pulsate {
+    0% { transform: scale(0.1, 0.1); opacity: 0.0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.2, 1.2); opacity: 0.0; }
+}
+
+.progress-spinner.queued circle {
+    fill: none;
+    stroke: #949393;
+}
+
+.progress-spinner.queued circle.inner {
+    display: block;
+    fill: #949393;
+    stroke: #949393;
+}
+
+.empty-state-content svg {
+    vertical-align: middle;
+}
+
+.empty-state-content > span {
+    padding-left: 15px;
+}
+.progress-spinner.queued path {
+    fill: none;
+    stroke: none;
+}
+
+.progress-spinner.not_built circle,
+.progress-spinner.skipped circle {
+    fill: none;
+    stroke: #949393;
+} 
+
+.progress-spinner.not_built path,
+.progress-spinner.skipped   path {
+    fill: none;
+    stroke: none;
+}
+
+.pipeline-connector {
+    stroke: #949393;
+}
+
+.pipeline-node-terminal {
+    fill: #949393;
+}
+
+.pipeline-connector-skipped {
+    stroke: #949393;
+    stroke-opacity: 0.25;
+}
+
+.pipeline-big-label {
+}
+
+.pipeline-small-label {
+    font-size: 80%;
+}
+
+.pipeline-big-label.selected,
+.pipeline-small-label.selected {
+    font-weight:bold;
+}
+
+.pipeline-selection-highlight circle {
+    fill: none;
+    stroke: #4A90E2;
+}
+

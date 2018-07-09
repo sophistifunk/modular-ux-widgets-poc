@@ -8,9 +8,11 @@
         "preserveConstEnums": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "react",
-        "experimentalDecorators":true,
+        "experimentalDecorators": true,
         "strict": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "baseUrl": "src",
+        "rootDir": "src"      
     },
     "include": [
         "src/main/index.ts"

@@ -2,12 +2,10 @@
   "name": "example-widget",
   "version": "1.0.0",
   "description": "Example Widget for PoC",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "scripts": {
-    "tsc": "rm -rf dist && tsc",
-    "tsc:watch": "rm -rf dist && tsc -w",
-    "dist": "rm -rf dist && tsc && node dist-package.js",
+    "dist": "gulp dist",
     "prepublishOnly": "echo \"Do not publish from root, publish from dist\" && exit 1"
   },
   "license": "MIT",
@@ -15,6 +13,13 @@
   "devDependencies": {
     "@types/react": "16.4.2",
     "@types/react-dom": "16.0.6",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "run-sequence": "^2.2.1",
+    "through2": "^2.0.3",
     "typescript": "^2.9.2"
   },
   "peerDependencies": {

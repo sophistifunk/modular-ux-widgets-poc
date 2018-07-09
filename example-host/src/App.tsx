@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import 'example-widget/styles/GraphWidget.css';
 
 import logo from './logo.svg';
 
