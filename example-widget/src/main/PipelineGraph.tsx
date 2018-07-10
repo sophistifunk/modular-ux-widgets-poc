@@ -4,6 +4,7 @@ import { CompositeConnection, decodeResultValue, defaultLayout, LabelInfo, Layou
 import { getGroupForResult } from './support/StatusIndicator';
 import { strokeWidth as nodeStrokeWidth } from './support/SvgSpinner';
 import { TruncatingLabel } from './support/TruncatingLabel';
+import { WidgetDescription } from '../framework';
 
 type SVGChildren = Array<any>; // Fixme: Maybe refine this?
 
@@ -32,6 +33,7 @@ interface State {
 
 export class PipelineGraph extends React.Component {
 
+    // NB: Declaring state and props here instead of using generic base makes a bunch of things typecheck easier
     state:State;
     props!:Props;
 
@@ -638,3 +640,8 @@ export class PipelineGraph extends React.Component {
     }
 }
 
+export const widgetDescription = new WidgetDescription<Props, PipelineGraph>(PipelineGraph)
+    .widgetEvents('onNodeClick')
+    .hostEvents() // TODO: Demonstrate working host events
+    .models('stages', 'selectedStage')
+    .services(); // TODO: Demonstrate working services
