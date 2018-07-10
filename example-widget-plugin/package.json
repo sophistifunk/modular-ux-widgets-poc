@@ -1,5 +1,5 @@
 {
-  "name": "example-widget",
+  "name": "example-widget-plugin",
   "version": "1.0.0",
   "description": "Example Widget for PoC",
   "main": "dist/lib/index.js",
@@ -24,9 +24,11 @@
   },
   "peerDependencies": {
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "@imeredith/es-extensions-api": "^0.0.1"
   },
   "dependencies": {
-    "@imeredith/es-extensions-api": "0.0.3"
+    "@imeredith/es-extensions-api": "0.0.3",
+    "example-widget": "file:../example-widget/dist"
   }
 }
