@@ -120,19 +120,32 @@ We need great documentation on the required metadata and processes, and tooling 
 
 ---
 
+## Specifications 
+
+### Static Assets
+
+ * Widget must:
+   * Place all static assets such as images (not styles) within `/dist/assets/` during build
+ * Host Application must:
+   * Host (or publish to a known host during build) all the assets within `/node_modules/my-widget-name/assets/` under a common base URL
+   * Provive the common base URL to the widget instance via the react property `assetURLBase`
+
+---
+
 ## TODOs
 
 ### Sooner
 
 - [ ] Standardise CSS preformatter and identify a fixed location / format within the widget artefact, update the examples
 - [ ] Create and document a standard for specifying i18n resouce bundles for a widget with strong types, and how host applications can easily locate the correct data based on locale
-- [ ] Identify and document location of static assets within the widget artefact
-- [ ] Show a case in the `example-host` demonstrating switchable i18n bundles and static asset hosting
+- [X] Identify and document location of static assets within the widget artefact
+- [ ] Show a case in the `example-host` demonstrating switchable i18n bundles 
+- [X] Show a case in the `example-host` demonstrating static asset hosting
 - [ ] Move the framework code out of `/example-widget/src/framework` and into `/framework` as a dependency
 - [ ] Proof out the host events Signal system with some examples
+- [ ] Create an example to show the kind of documentation we want to generate for each widget
 - [ ] Create a build-system plugin for generating the widget documentation from metadata and `.d.ts` definitions created by TSC; we want quality output, and we only want to include typedefs and documentation for public / exported properties
-- [ ] Create (or copy from Blue Ocean) some basic unit tests within `example-widget`
-- [ ] Add unit tests for framework code as it grows
+- [ ] Expand the "Specifications" section of this document with basic descriptions of the required processes and fixed structure of widget artefacts
 
 ### Later 
 

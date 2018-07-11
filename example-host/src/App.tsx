@@ -2,28 +2,42 @@ import * as React from 'react';
 import './App.css';
 import 'example-widget/styles/GraphWidget.css';
 
-import logo from './logo.svg';
-
-import {PipelineGraph} from 'example-widget';
+import {PipelineGraph, TrafficState} from 'example-widget';
 
 import "example-widget-plugin";
 
 import * as TestData from './TestData';
+import { EventSource } from './HostEvents';
 
 
 class App extends React.Component {
+
+    trafficStateChanged = new EventSource<TrafficState>('trafficStateChanged');
+
+    trafficOff = () => this.trafficStateChanged.dispatch(TrafficState.off);
+    trafficRed = () => this.trafficStateChanged.dispatch(TrafficState.red);
+    trafficYellow = () => this.trafficStateChanged.dispatch(TrafficState.yellow);
+    trafficGreen = () => this.trafficStateChanged.dispatch(TrafficState.green);
+
     public render() {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to Widgets</h1>
                 </header>
-                <div id="graphs">
-                <div className="PipelineGraph-container"><PipelineGraph stages={TestData.multiStageSpacing()}/></div>
-                <div className="PipelineGraph-container"><PipelineGraph stages={TestData.flatPipeline()}/></div>
+
+                <div id="traffic-controls">
+                    <span>Traffic state:</span>
+                    <button onClick={this.trafficOff}>Off</button>
+                    <button onClick={this.trafficRed}>Red</button>
+                    <button onClick={this.trafficYellow}>Yellow</button>
+                    <button onClick={this.trafficGreen}>Green</button>
                 </div>
-                TODO: Move PipelineGraph-container into widget itself
+
+                <div id="graphs">
+                <PipelineGraph assetURLBase='/widget-assets/' trafficStateChanged={this.trafficStateChanged} stages={TestData.multiStageSpacing()}/>
+                <PipelineGraph assetURLBase='/widget-assets/' trafficStateChanged={this.trafficStateChanged} stages={TestData.flatPipeline()}/>
+                </div>
             </div>
         );
     }

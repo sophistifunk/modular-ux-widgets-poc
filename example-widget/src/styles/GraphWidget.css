@@ -1,4 +1,13 @@
-/* Copied from Blue Ocean and de-LESSed by hand for PoC purposes */
+
+/* Just for demonstrating asset hosting and events */
+.traffic-light {
+    position:absolute;
+    top:75px;
+    right:5px;
+}
+
+
+/* The following copied from Blue Ocean and de-LESSed by hand for PoC purposes */
 
 .PipelineGraph-container {
     display: flex;
@@ -6,6 +15,7 @@
     align-items: center;
     overflow-x: auto;
     margin-bottom: 16px;
+    position:relative;
 }
 
 .PipelineGraph-container .PipelineGraph {
@@ -13,10 +23,6 @@
     margin-right: auto;
 }
 
-/*
-    Styles for the pipeline result status displays used in both build/branch lists, and
-    within the PipelineGraph component.
-*/
 
 .result-status-glyph {
     stroke: none;

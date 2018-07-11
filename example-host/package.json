@@ -11,6 +11,7 @@
     "react-scripts-ts": "2.16.0"
   },
   "scripts": {
+    "postinstall": "cp -r node_modules/example-widget/assets/* public/widget-assets/",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",

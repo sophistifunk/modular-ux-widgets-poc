@@ -1,6 +1,7 @@
 
 export interface WidgetProps {
     // TODO: Add any props that all Widgets will need
+    assetURLBase?: string;
 }
 
 export interface UXWidget<T extends WidgetProps> {
