@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es6",
+        "declaration": true,
+        "outDir": "./dist",
+        "preserveConstEnums": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "strict": true,
+        "sourceMap": true,
+        "baseUrl": "src",
+        "rootDir": "src"      
+    },
+    "include": [
+        "src/main/index.tsx"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

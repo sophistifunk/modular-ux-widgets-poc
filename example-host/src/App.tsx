@@ -6,6 +6,8 @@ import logo from './logo.svg';
 
 import {PipelineGraph} from 'example-widget';
 
+import "example-widget-plugin";
+
 import * as TestData from './TestData';
 
 

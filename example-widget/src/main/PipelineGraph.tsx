@@ -5,6 +5,8 @@ import { getGroupForResult } from './support/StatusIndicator';
 import { strokeWidth as nodeStrokeWidth } from './support/SvgSpinner';
 import { TruncatingLabel } from './support/TruncatingLabel';
 import { WidgetDescription } from '../framework';
+import { ExtensionStore } from '@imeredith/es-extensions-api';
+import { Extensions } from './Extensions';
 
 type SVGChildren = Array<any>; // Fixme: Maybe refine this?
 
@@ -628,15 +630,25 @@ export class PipelineGraph extends React.Component {
             }
         }
 
-        return (
-            <div style={outerDivStyle} className="PipelineGraph">
+        const extensions = ExtensionStore.getInstance().getExtensions<Extensions.Welcome.Context>(Extensions.Welcome.extensionPointId);
+        const mapped = extensions.map((e, i) => {
+            return <div key={`example-${i}`} 
+            ref={(container) => {
+                container && e({container, name: "World!"})
+             }} />
+        })
+        return [
+            <div key={1} style={outerDivStyle} className="PipelineGraph">
                 <svg width={measuredWidth} height={measuredHeight}>
                     {visualElements}
                 </svg>
                 {bigLabels.map(label => this.renderBigLabel(label))}
                 {smallLabels.map(label => this.renderSmallLabel(label))}
+            </div>,
+            <div key={2}>
+                {mapped}
             </div>
-        );
+        ];
     }
 }
 
