@@ -9,7 +9,6 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
@@ -31,4 +30,24 @@
   to { transform: rotate(360deg); }
 }
 
-/* @import "GraphWidget.css" */
+#traffic-controls {
+    margin:1em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#traffic-controls button {
+    width: 7em;
+    padding: 0.5em;
+    margin:5px;
+    border-radius: 0.5em;
+    border-width: 1px;
+    border-color: #222;
+    background:linear-gradient(0deg, rgba(150,150,150,1) 0%, rgba(222,222,222,1) 100%);;
+}
+
+#traffic-controls button:focus {
+    outline:none;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}

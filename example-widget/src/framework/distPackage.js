@@ -4,7 +4,7 @@
  * TODO: Should live in the framework module, should be a gulp plugin
  */
 
-const fs = require('fs').promises;
+const fs = require('./fsPromises');
 
 function createDistPackage(sourceFilePath, destFilePath) {
     return fs.readFile(sourceFilePath, 'utf8')

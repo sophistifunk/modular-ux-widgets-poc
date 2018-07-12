@@ -33,7 +33,12 @@ gulp.task('copy-styles', () =>
         .pipe(gulp.dest('./dist/styles'))
 );
 
-gulp.task('build-all', ['ts', 'copy-styles', 'ts-framework']);
+gulp.task('copy-assets', () =>
+    gulp.src('./assets/**/*.{gif,png,jpg}')
+        .pipe(gulp.dest('./dist/assets'))
+);
+
+gulp.task('build-all', ['ts', 'ts-framework', 'copy-styles', 'copy-assets']);
 
 gulp.task('dist', done =>
     runSequence('clean', 'build-all', 'make-dist-package', done)

@@ -4,7 +4,7 @@ import { CompositeConnection, decodeResultValue, defaultLayout, LabelInfo, Layou
 import { getGroupForResult } from './support/StatusIndicator';
 import { strokeWidth as nodeStrokeWidth } from './support/SvgSpinner';
 import { TruncatingLabel } from './support/TruncatingLabel';
-import { WidgetDescription } from '../framework';
+import { WidgetDescription, Signal, Subscription, HostEvent, Handler } from '../framework';
 import { ExtensionStore } from '@imeredith/es-extensions-api';
 import { Extensions } from './Extensions';
 
@@ -16,6 +16,8 @@ function connectorKey(leftNode: NodeInfo, rightNode: NodeInfo) {
 }
 
 interface Props {
+    trafficStateChanged: Signal<TrafficState>,
+    assetURLBase: string,
     stages: Array<StageInfo>;
     layout?: LayoutInfo;
     onNodeClick?: (nodeName: string, id: number) => void;
@@ -31,6 +33,14 @@ interface State {
     measuredHeight: number;
     layout: LayoutInfo;
     selectedStage?: StageInfo;
+    trafficState: TrafficState;
+}
+
+export enum TrafficState {
+    off = 'off',
+    red = 'red',
+    yellow = 'yellow',
+    green = 'green',
 }
 
 export class PipelineGraph extends React.Component {
@@ -38,6 +48,8 @@ export class PipelineGraph extends React.Component {
     // NB: Declaring state and props here instead of using generic base makes a bunch of things typecheck easier
     state:State;
     props!:Props;
+
+    subscriptions: Array<Subscription> = [];
 
     constructor(props: Props) {
         super(props);
@@ -51,11 +63,21 @@ export class PipelineGraph extends React.Component {
             measuredHeight: 0,
             layout: { ...defaultLayout, ...props.layout },
             selectedStage: props.selectedStage,
+            trafficState: TrafficState.off
         };
     }
 
     componentWillMount() {
         this.stagesUpdated(this.props.stages);
+        this.subscriptions.push(this.props.trafficStateChanged.add(this.onTrafficStateChanged));
+    }
+
+    onTrafficStateChanged:Handler<TrafficState> = (event) => {
+        this.setState({trafficState: event.value});
+    }
+
+    componentWillUnmount() {
+        this.subscriptions.forEach(subscription => subscription.cancel());
     }
 
     componentWillReceiveProps(nextProps: Props) {
@@ -606,7 +628,8 @@ export class PipelineGraph extends React.Component {
     }
 
     render() {
-        const { nodeColumns = [], connections = [], bigLabels = [], smallLabels = [], measuredWidth, measuredHeight } = this.state;
+        const { nodeColumns = [], connections = [], bigLabels = [], smallLabels = [], measuredWidth, measuredHeight, trafficState } = this.state;
+        const { assetURLBase } = this.props;
 
         // Without these we get fire, so they're hardcoded
         const outerDivStyle: React.CSSProperties = {
@@ -634,6 +657,7 @@ export class PipelineGraph extends React.Component {
         const extensions = ExtensionStore.getInstance().getExtensions<Extensions.Welcome.Context>(Extensions.Welcome.extensionPointId);
         // Create divs for each extension and render them.
         const mapped = extensions.map((e, i) => {
+<<<<<<< HEAD
             return <div key={`example-${i}`} ref={(container) => container && e({container, name: "World!"})} />
         })
         
@@ -647,13 +671,32 @@ export class PipelineGraph extends React.Component {
             </div>,
             <div key={2}>
                 {mapped}
+=======
+            return <div key={`example-${i}`} 
+            ref={(container) => {
+                container && e({container, name: "World!"})
+             }} />
+        });
+
+        return (
+            <div className="PipelineGraph-container">
+                <div style={outerDivStyle} className="PipelineGraph">
+                    <svg width={measuredWidth} height={measuredHeight}>
+                        {visualElements}
+                    </svg>
+                    {bigLabels.map(label => this.renderBigLabel(label))}
+                    {smallLabels.map(label => this.renderSmallLabel(label))}
+                </div>
+                <div>{mapped}</div>
+                <img className='traffic-light' src={`${assetURLBase}tl-${trafficState}.png`} width="40"/>
+>>>>>>> origin/master
             </div>
-        ];
+        );
     }
 }
 
 export const widgetDescription = new WidgetDescription<Props, PipelineGraph>(PipelineGraph)
     .widgetEvents('onNodeClick')
-    .hostEvents() // TODO: Demonstrate working host events
+    .hostEvents('trafficStateChanged') // TODO: Demonstrate working host events
     .models('stages', 'selectedStage')
     .services(); // TODO: Demonstrate working services
