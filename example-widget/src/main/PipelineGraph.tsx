@@ -657,27 +657,8 @@ export class PipelineGraph extends React.Component {
         const extensions = ExtensionStore.getInstance().getExtensions<Extensions.Welcome.Context>(Extensions.Welcome.extensionPointId);
         // Create divs for each extension and render them.
         const mapped = extensions.map((e, i) => {
-<<<<<<< HEAD
             return <div key={`example-${i}`} ref={(container) => container && e({container, name: "World!"})} />
         })
-        
-        return [
-            <div key={1} style={outerDivStyle} className="PipelineGraph">
-                <svg width={measuredWidth} height={measuredHeight}>
-                    {visualElements}
-                </svg>
-                {bigLabels.map(label => this.renderBigLabel(label))}
-                {smallLabels.map(label => this.renderSmallLabel(label))}
-            </div>,
-            <div key={2}>
-                {mapped}
-=======
-            return <div key={`example-${i}`} 
-            ref={(container) => {
-                container && e({container, name: "World!"})
-             }} />
-        });
-
         return (
             <div className="PipelineGraph-container">
                 <div style={outerDivStyle} className="PipelineGraph">
@@ -689,7 +670,6 @@ export class PipelineGraph extends React.Component {
                 </div>
                 <div>{mapped}</div>
                 <img className='traffic-light' src={`${assetURLBase}tl-${trafficState}.png`} width="40"/>
->>>>>>> origin/master
             </div>
         );
     }
