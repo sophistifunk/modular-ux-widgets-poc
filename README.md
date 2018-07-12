@@ -142,7 +142,7 @@ We need great documentation on the required metadata and processes, and tooling 
 - [ ] Show a case in the `example-host` demonstrating switchable i18n bundles 
 - [X] Show a case in the `example-host` demonstrating static asset hosting
 - [ ] Move the framework code out of `/example-widget/src/framework` and into `/framework` as a dependency
-- [ ] Proof out the host events Signal system with some examples
+- [X] Proof out the host events Signal system with some examples
 - [ ] Create an example to show the kind of documentation we want to generate for each widget
 - [ ] Create a build-system plugin for generating the widget documentation from metadata and `.d.ts` definitions created by TSC; we want quality output, and we only want to include typedefs and documentation for public / exported properties
 - [ ] Expand the "Specifications" section of this document with basic descriptions of the required processes and fixed structure of widget artefacts
