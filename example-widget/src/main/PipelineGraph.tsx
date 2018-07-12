@@ -630,13 +630,13 @@ export class PipelineGraph extends React.Component {
             }
         }
 
+        // Get all extensions that implement the Welcome Extension
         const extensions = ExtensionStore.getInstance().getExtensions<Extensions.Welcome.Context>(Extensions.Welcome.extensionPointId);
+        // Create divs for each extension and render them.
         const mapped = extensions.map((e, i) => {
-            return <div key={`example-${i}`} 
-            ref={(container) => {
-                container && e({container, name: "World!"})
-             }} />
+            return <div key={`example-${i}`} ref={(container) => container && e({container, name: "World!"})} />
         })
+        
         return [
             <div key={1} style={outerDivStyle} className="PipelineGraph">
                 <svg width={measuredWidth} height={measuredHeight}>
