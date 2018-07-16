@@ -52,7 +52,7 @@ This document is intended to be a guide to requirements and focal point for disc
  * Typedefs and documentation for properties
  * Typedefs and documentation for services
  * Typedefs and documentation for widget events
- * See work-in-progress sample documentation [here](example-widget/README.md)
+ * See [work-in-progress sample documentation](example-widget/README.md)
  * Metadata, signal Typedefs, and documentation identifying the host events that the widget wants to subscribe to
  * Stylesheets, and embedded assets such as images in a standardised layout within the artefact
  * i18n resource bundles in a standardised layout and format within the artefact
