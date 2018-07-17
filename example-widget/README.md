@@ -129,7 +129,6 @@ Signal of [TrafficState](#types-TrafficState)
 
 | Key | Value | Description |
 |-----|-------|-------------|
-| ken | 1 | Shoryuken |
-| ryu | 2 | Hadouken |
-| guile | 3 | Sonic Boom |
-| sagat | 99 | Tiger Uppercut |
+|stage|STAGE|
+|parallel|PARALLEL|
+|step|STEP|
