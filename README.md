@@ -120,7 +120,7 @@ We need great documentation on the required metadata and processes, and tooling 
 ---
 ## Extensibility
 
-For documentation on implemnting extensions see go [here](https://github.com/imeredith/es-extensions-api)
+This is provided via Jenkins [JEP-204](https://github.com/jenkinsci/jep/tree/master/jep/204). For documentation on implmenting extensions see the implementation of the JEP [here](https://github.com/imeredith/es-extensions-api)
 ---
 
 ## Specifications 
