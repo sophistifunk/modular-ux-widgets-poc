@@ -1,6 +1,6 @@
 {
-  "name": "example-widget",
-  "version": "1.0.0",
+  "name": "@expantra/pipeline-widget-proto",
+  "version": "0.0.1",
   "description": "Example Widget for PoC",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
