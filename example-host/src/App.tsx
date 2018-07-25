@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import 'example-widget/styles/GraphWidget.css';
+import '@expantra/pipeline-widget-proto/styles/GraphWidget.css';
 
-import {PipelineGraph, TrafficState} from 'example-widget';
+import {PipelineGraph, TrafficState} from '@expantra/pipeline-widget-proto';
 
 import "example-widget-plugin";
 
@@ -19,7 +19,14 @@ class App extends React.Component {
     trafficYellow = () => this.trafficStateChanged.dispatch(TrafficState.yellow);
     trafficGreen = () => this.trafficStateChanged.dispatch(TrafficState.green);
 
-    public render() {
+    
+    public render(){
+        
+        console.log(JSON.stringify(TestData.multiStageSpacing(),null,4));
+        console.log('');
+        console.log(JSON.stringify(TestData.flatPipeline(),null,4));
+
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -36,7 +43,7 @@ class App extends React.Component {
 
                 <div id="graphs">
                 <PipelineGraph assetURLBase='/widget-assets/' trafficStateChanged={this.trafficStateChanged} stages={TestData.multiStageSpacing()}/>
-                <PipelineGraph assetURLBase='/widget-assets/' trafficStateChanged={this.trafficStateChanged} stages={TestData.flatPipeline()}/>
+                {/* <PipelineGraph assetURLBase='/widget-assets/' trafficStateChanged={this.trafficStateChanged} stages={TestData.flatPipeline()}/> */}
                 </div>
             </div>
         );

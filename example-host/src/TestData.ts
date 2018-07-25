@@ -3,7 +3,7 @@
  */
 
 
-import { Result, StageInfo } from 'example-widget';
+import { Result, StageInfo } from '@expantra/pipeline-widget-proto';
 
 type StageType = string; // TODO: export from PipelineGraphModel
 
