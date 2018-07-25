@@ -18,13 +18,14 @@ function processPackage(packageDetails) {
     // Delete some things unneeded for the distributed artefact
     packageDetails.scripts = {};
     delete packageDetails.devDependencies;
+    delete packageDetails.prepublishOnly;
 
     // Tweak some settings
     packageDetails.main = 'lib/index.js';
     packageDetails.types = 'lib/index.d.ts';
 
-    // TODO: Ability to publish from dist
-    packageDetails.scripts.prepublishOnly = 'echo "NOT YET" && exit 1';
+    // // TODO: Ability to publish from dist
+    // packageDetails.scripts.prepublishOnly = 'echo "NOT YET" && exit 1';
 
     return packageDetails;
 }

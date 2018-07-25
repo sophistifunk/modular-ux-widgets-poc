@@ -45,7 +45,7 @@ export const defaultLayout = {
 
 // TODO: Change "export type Foo = {}" to "export interface Foo {}"
 
-export type StageType = string; // TODO: Lookup actual values, make an enum
+export type StageType = string; // TODO: STAGE, PARALLEL, STEP
 
 /**
  * StageInfo is the input, in the form of an Array<StageInfo> of the top-level stages of a pipeline

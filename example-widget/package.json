@@ -1,6 +1,6 @@
 {
-  "name": "example-widget",
-  "version": "1.0.0",
+  "name": "@expantra/pipeline-widget-proto",
+  "version": "0.0.1",
   "description": "Example Widget for PoC",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
@@ -9,7 +9,6 @@
     "prepublishOnly": "echo \"Do not publish from root, publish from dist\" && exit 1"
   },
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "@types/react": "16.4.2",
     "@types/react-dom": "16.0.6",

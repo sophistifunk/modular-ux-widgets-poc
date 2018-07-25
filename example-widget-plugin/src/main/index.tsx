@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ExtensionStore } from '@imeredith/es-extensions-api';
-import { Extensions } from 'example-widget';
+import { Extensions } from '@expantra/pipeline-widget-proto';
 
 export namespace Welcome {
     export interface WelcomeProps {
