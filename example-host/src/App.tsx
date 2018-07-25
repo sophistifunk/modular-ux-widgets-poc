@@ -21,12 +21,7 @@ class App extends React.Component {
 
     
     public render(){
-        
-        console.log(JSON.stringify(TestData.multiStageSpacing(),null,4));
-        console.log('');
-        console.log(JSON.stringify(TestData.flatPipeline(),null,4));
-
-
+ 
         return (
             <div className="App">
                 <header className="App-header">
