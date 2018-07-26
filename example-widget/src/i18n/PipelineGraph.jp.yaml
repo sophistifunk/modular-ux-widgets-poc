@@ -1,0 +1,4 @@
+PipelineGraph:
+   label:
+      start: 開始
+      end: 終わり

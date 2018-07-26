@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@expantra/pipeline-widget-proto": "0.0.1",
+    "@expantra/pipeline-widget-proto": "file:../example-widget/dist",
     "@imeredith/es-extensions-api": "0.0.3",
     "example-widget-plugin": "file:../example-widget-plugin/dist",
     "react": "^16.4.1",

@@ -22,6 +22,7 @@ interface Props {
     layout?: LayoutInfo;
     onNodeClick?: (nodeName: string, id: number) => void;
     selectedStage?: StageInfo;
+    resourceBundle: any;
 }
 
 interface State {
@@ -68,7 +69,7 @@ export class PipelineGraph extends React.Component {
     }
 
     componentWillMount() {
-        this.stagesUpdated(this.props.stages);
+        this.stagesUpdated(this.props.stages, this.props.resourceBundle);
         this.subscriptions.push(this.props.trafficStateChanged.add(this.onTrafficStateChanged));
     }
 
@@ -83,6 +84,11 @@ export class PipelineGraph extends React.Component {
     componentWillReceiveProps(nextProps: Props) {
         let newState: Partial<State> | undefined;
         let needsLayout = false;
+
+        if (nextProps.resourceBundle !== this.props.resourceBundle) {
+            console.log('resource changed, needs layout');
+            needsLayout = true; // Because we consume the labels during layout for now
+        }
 
         if (nextProps.layout != this.props.layout) {
             newState = { ...newState, layout: { ...defaultLayout, ...this.props.layout } };
@@ -100,7 +106,7 @@ export class PipelineGraph extends React.Component {
 
         const doLayoutIfNeeded = () => {
             if (needsLayout) {
-                this.stagesUpdated(nextProps.stages);
+                this.stagesUpdated(nextProps.stages, nextProps.resourceBundle);
             }
         };
 
@@ -115,8 +121,14 @@ export class PipelineGraph extends React.Component {
     /**
      * Main process for laying out the graph. Calls out to PipelineGraphLayout module.
      */
-    private stagesUpdated(newStages: Array<StageInfo> = []) {
-        this.setState(layoutGraph(newStages, this.state.layout));
+    private stagesUpdated(newStages: Array<StageInfo> = [], resourceBundle: any) {
+
+        const startLabel:string = resourceBundle.PipelineGraph.label.start || 'missing';
+        const endLabel:string = resourceBundle.PipelineGraph.label.end || 'missing';
+
+        console.log('stagesUpdated, bundle is', JSON.stringify(this.props.resourceBundle,null,4))
+
+        this.setState(layoutGraph(newStages, this.state.layout, startLabel, endLabel));
     }
 
     /**
@@ -631,6 +643,8 @@ export class PipelineGraph extends React.Component {
         const { nodeColumns = [], connections = [], bigLabels = [], smallLabels = [], measuredWidth, measuredHeight, trafficState } = this.state;
         const { assetURLBase } = this.props;
 
+        console.log('graph rendering, lang = ', JSON.stringify(this.props.resourceBundle))
+
         // Without these we get fire, so they're hardcoded
         const outerDivStyle: React.CSSProperties = {
             position: 'relative', // So we can put the labels where we need them
@@ -679,6 +693,6 @@ export class PipelineGraph extends React.Component {
 
 export const widgetDescription = new WidgetDescription<Props, PipelineGraph>(PipelineGraph)
     .widgetEvents('onNodeClick')
-    .hostEvents('trafficStateChanged') // TODO: Demonstrate working host events
+    .hostEvents('trafficStateChanged') 
     .models('stages', 'selectedStage')
     .services(); // TODO: Demonstrate working services

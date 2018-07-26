@@ -131,14 +131,31 @@ We need great documentation on the required metadata and processes, and tooling 
    * Host (or publish to a known host during build) all the assets within `/node_modules/my-widget-name/assets/` under a common base URL
    * Provive the common base URL to the widget instance via the react property `assetURLBase`
 
+### CSS
+ * Widget must:
+   * Place a single CSS file containing all required styles in `/dist/styles/css/main.css`
+ * Widget can:
+   * Place source .scss files in `/dist/styles/scss/` for apps to use with overridden defs if they need to
+ * Host Application must:
+   * Ensure the widget's CSS is loaded by the time the widget is displayed
+
+### Internationalisation Resources
+ * Widget must:
+   * Place resource data in json format in `/dist/i18n/{WidgetName}.{locale}.json`
+   * Take appropriate action when the `resourceBundle` prop is changed
+ * Host must:
+   * Read the resource bundle JSON files (probably during build)
+   * Based on locale, pass the correct object to the widget's `resourceBundle` prop
+
+
 ---
 
 ## TODOs
 
 ### Sooner
 
-- [ ] Standardise CSS preformatter and identify a fixed location / format within the widget artefact, update the examples
-- [ ] Create and document a standard for specifying i18n resouce bundles for a widget with strong types, and how host applications can easily locate the correct data based on locale
+- [X] Standardise CSS preformatter and identify a fixed location / format within the widget artefact, update the examples
+- [X] Create and document a standard for specifying i18n resouce bundles for a widget ~~with strong types~~, and how host applications can easily locate the correct data based on locale
 - [X] Identify and document location of static assets within the widget artefact
 - [ ] Show a case in the `example-host` demonstrating switchable i18n bundles 
 - [X] Show a case in the `example-host` demonstrating static asset hosting
@@ -150,9 +167,11 @@ We need great documentation on the required metadata and processes, and tooling 
 
 ### Later 
 
+- [ ] Come up with a good-enough "default" widget-side recommendation/class for actually getting strings from resources, instead of having it completely DIY as it is now. No need for this to actually live in the widget framework though.
 - [ ] Figure out a nice way to automatically namespace CSS class names, and have them available to widget source code in a strongly-typed manner
 - [ ] Extract the `framework` codebase into its own repo with documentation and get documentation hosted somewhere 
 - [ ] Identify (with other teams) the best candidates to flesh out into initial production widgets
+- [ ] Change to support specifying individual asset URLs, so that host app bundlers can send in `data:` instead of making them all hardcoded from a variable base url. *Also maintain the ability to do it the current way*.
 
 
 --- 

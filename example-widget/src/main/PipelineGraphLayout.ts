@@ -12,14 +12,14 @@ import { NodeColumn, LabelInfo, LayoutInfo, StageInfo, NodeInfo } from './Pipeli
  *  4. Create a bigLabel per column, and a smallLabel for any child nodes
  *  5. Measure the extents of the graph
  */
-export function layoutGraph(newStages: Array<StageInfo>, layout: LayoutInfo) {
+export function layoutGraph(newStages: Array<StageInfo>, layout: LayoutInfo, startLabel: string, endLabel: string) {
     const stageNodeColumns = createNodeColumns(newStages);
     const { nodeSpacingH, ypStart } = layout;
 
     const startNode:NodeInfo = {
         x: 0,
         y: 0,
-        name: 'Start',
+        name: startLabel,
         id: -1,
         isPlaceholder: true,
         key: 'start-node',
@@ -29,7 +29,7 @@ export function layoutGraph(newStages: Array<StageInfo>, layout: LayoutInfo) {
     const endNode:NodeInfo = {
         x: 0,
         y: 0,
-        name: 'End',
+        name: endLabel,
         id: -2,
         isPlaceholder: true,
         key: 'end-node',
