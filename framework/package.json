@@ -1,16 +1,22 @@
 {
   "name": "framework",
-  "version": "1.0.0",
-  "main": "dist/index.js",
+  "version": "0.0.1",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "scripts": {
-    "dist": "rm -rf dist && tsc",
-    "dist:watch": "rm -rf dist && tsc -w",
-    "prepublishOnly": "echo \"TODO: No publish yet\" && exit 1"
+    "dist": "gulp dist",
+    "prepublishOnly": "echo \"Do not publish from root, publish from dist\" && exit 1"
   },
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/node": "^10.5.4",
     "@types/react": "^16.3.18",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "run-sequence": "^2.2.1",
     "typescript": "^2.9.2"
   },
   "peerDependencies": {},

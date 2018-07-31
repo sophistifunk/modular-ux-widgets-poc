@@ -6,8 +6,6 @@ const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const yaml = require('gulp-yaml');
 
-const { createDistPackage } = require('./src/framework/distPackage');
-
 const tsProject = ts.createProject('tsconfig.json');
 const tsProjectFW = ts.createProject('tsconfig.json');
 
@@ -30,9 +28,10 @@ gulp.task("ts-framework", () =>
 );
 
 // Create the inner package.json within /dist for publishing
-gulp.task('make-dist-package', () =>
-    createDistPackage('./package.json', './dist/package.json')
-);
+gulp.task('make-dist-package', () => {
+    const { createDistPackage } = require('./dist/framework/distPackage');
+    return createDistPackage('./package.json', './dist/package.json')
+});
 
 // This compiles the scss to a single /dist/styles/css/main.css for hosts that don't want to compile the css
 gulp.task('compile-sass', () =>

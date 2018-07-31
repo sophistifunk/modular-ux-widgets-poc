@@ -2,15 +2,15 @@
     "compilerOptions": {
         "module": "es6",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "es6",
         "declaration": true,
-        "outDir": "./dist",
+        "outDir": "./dist/lib",
         "preserveConstEnums": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "preserve",
         "experimentalDecorators":true,
         "strict": true,
-        "sourceMap": true
+        "sourceMap": true,
     },
     "include": [
         "src/index.ts"
