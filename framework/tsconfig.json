@@ -13,9 +13,12 @@
         "sourceMap": true,
     },
     "include": [
-        "src/index.ts"
+        "src/**/*.ts"
     ],
     "exclude": [
-        "node_modules"
+        "src/distPackage.ts",
+        "src/fsPromises.ts",
+        "src/Reflector.ts",
+        "src/index.build.ts",
     ]
 }

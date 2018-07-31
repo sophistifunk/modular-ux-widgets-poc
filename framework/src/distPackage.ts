@@ -18,9 +18,8 @@ export function createDistPackage(sourceFilePath: string, destFilePath: string) 
 
 export function processPackage(packageDetails:any) {
     // Delete some things unneeded for the distributed artefact
-    packageDetails.scripts = {};
     delete packageDetails.devDependencies;
-    delete packageDetails.prepublishOnly;
+    delete packageDetails.scripts;
 
     // Tweak some settings
     if (packageDetails.main) {
@@ -29,9 +28,6 @@ export function processPackage(packageDetails:any) {
     if (packageDetails.types) {
         packageDetails.types = packageDetails.types.replace('dist/','');
     }
-
-    // // TODO: Ability to publish from dist
-    // packageDetails.scripts.prepublishOnly = 'echo "NOT YET" && exit 1';
 
     return packageDetails;
 }
