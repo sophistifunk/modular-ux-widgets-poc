@@ -4,7 +4,7 @@
         "moduleResolution": "node",
         "target": "es6",
         "declaration": true,
-        "outDir": "./dist/lib",
+        "outDir": "./build",
         "preserveConstEnums": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "preserve",
@@ -14,11 +14,5 @@
     },
     "include": [
         "src/**/*.ts"
-    ],
-    "exclude": [
-        "src/distPackage.ts",
-        "src/fsPromises.ts",
-        "src/Reflector.ts",
-        "src/index.build.ts",
     ]
 }

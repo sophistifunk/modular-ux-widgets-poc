@@ -3,10 +3,8 @@ const del = require('del');
 const ts = require('gulp-typescript');
 const runSequence = require('run-sequence');
 
-// TODO: Sort out the filesets for build, lib, and common instead of including all
-
 // Main project to compile everything to ES6 modules for lib (/dist/lib)
-const tsProjectLib = ts.createProject('tsconfig.json');
+const tsProjectLib = ts.createProject('tsconfig.lib.json');
 
 // Secondary project to compile build-time code to run in node (/dist/build)
 const tsProjectBuild = ts.createProject('tsconfig.build.json');
@@ -41,4 +39,9 @@ gulp.task('build-all', ['ts-lib', 'ts-build']);
 // Main sequence for clean-building /dist ready for publish
 gulp.task('dist', done =>
     runSequence('clean', 'build-all', 'make-dist-package', done)
+);
+
+// Run main dist, then watch sources
+gulp.task('dist:watch', ['dist'], () => 
+    gulp.watch('src/**/*', ['build-all'])
 );
