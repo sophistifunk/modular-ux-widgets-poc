@@ -4,7 +4,7 @@ import { CompositeConnection, decodeResultValue, defaultLayout, LabelInfo, Layou
 import { getGroupForResult } from './support/StatusIndicator';
 import { strokeWidth as nodeStrokeWidth } from './support/SvgSpinner';
 import { TruncatingLabel } from './support/TruncatingLabel';
-import { WidgetDescription, Signal, Subscription, HostEvent, Handler } from '../framework';
+import { WidgetDescription, Signal, Subscription, HostEvent, Handler } from 'framework';
 import { ExtensionStore } from '@imeredith/es-extensions-api';
 import { Extensions } from './Extensions';
 

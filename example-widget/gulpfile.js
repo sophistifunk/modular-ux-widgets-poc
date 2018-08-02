@@ -29,7 +29,7 @@ gulp.task("ts-framework", () =>
 
 // Create the inner package.json within /dist for publishing
 gulp.task('make-dist-package', () => {
-    const { createDistPackage } = require('./dist/framework/distPackage');
+    const { createDistPackage } = require('framework/build/distPackage');
     return createDistPackage('./package.json', './dist/package.json')
 });
 

@@ -29,6 +29,14 @@ export function processPackage(packageDetails:any) {
         packageDetails.types = packageDetails.types.replace('dist/','');
     }
 
+    // Tweak relative local deps 
+    for (const key in packageDetails.dependencies) {
+        // TODO: This is awful, I need a better solution than this :'(
+        let value = packageDetails.dependencies[key];
+        value = value.replace(/^file:\.\.\//, 'file:../../');
+        packageDetails.dependencies[key] = value;
+    }
+
     return packageDetails;
 }
 

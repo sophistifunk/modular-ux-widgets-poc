@@ -1,7 +1,6 @@
 import * as fs from './fsPromises';
 
 export interface Reflector {
-
     debug(): string;
 };
 
@@ -13,6 +12,42 @@ export function typedocReflector(filePath: string): Promise<Reflector> {
     });
 }
 
+/**
+ * Known (interesting) KindStrings. 
+ * 
+ * The TypeScript kinds are a non-explicit enum, so the integer values may drift across TSC versions, we're stuck with 
+ * using the strings for now.
+ * 
+ * TODO: Figure out where TypeDoc gets these from, and use them. 
+ */
+enum KindString {
+    ExternalModule = 'External module',
+    Class = 'Class',
+    Constructor = 'Constructor',
+    Property = 'Property',
+    Method = 'Method',
+    Interface = 'Interface',
+    TypeAlias = 'Type alias',
+    Module = 'Module',
+    Variable = 'Variable',
+    Enumeration = 'Enumeration',
+    EnumerationMember = 'Enumeration member',
+    Function = 'Function'
+}
+
+/**
+ * The subset of module-level kinds we're looking at for individual entries in the documentation
+ */
+const typeKinds = [KindString.Class, KindString.Interface, KindString.TypeAlias, KindString.Enumeration];
+
+interface TDTypeDef {
+    // TODO: Name, refine
+    id: number,
+    kind: number,
+    kindString: string,
+    name: string,
+}
+
 class TypedocJSONReflector implements Reflector {
 
     typeNames: Array<string> = [];
@@ -20,6 +55,9 @@ class TypedocJSONReflector implements Reflector {
     keys: { [k: string]: number } = {};
     ids: { [k: string]: number } = {};
     kinds: Array<string> = [];
+    
+    foobars: { [k: string]: TDTypeDef } = {};
+    // ^^^^ TODO: Name
 
     total = 0;
 

@@ -11,7 +11,7 @@ const resJapanese = require('@expantra/pipeline-widget-proto/i18n/PipelineGraph.
 import "example-widget-plugin";
 
 import * as TestData from './TestData';
-import { EventSource } from './HostEvents';
+import { EventSource } from 'framework';
 
 const langs = {
     'English': resEnglish,
