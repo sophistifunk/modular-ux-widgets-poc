@@ -4,7 +4,7 @@ import { CompositeConnection, decodeResultValue, defaultLayout, LabelInfo, Layou
 import { getGroupForResult } from './support/StatusIndicator';
 import { strokeWidth as nodeStrokeWidth } from './support/SvgSpinner';
 import { TruncatingLabel } from './support/TruncatingLabel';
-import { WidgetDescription, Signal, Subscription, HostEvent, Handler } from 'framework';
+import { Signal, Subscription, HostEvent, Handler } from 'framework';
 import { ExtensionStore } from '@imeredith/es-extensions-api';
 import { Extensions } from './Extensions';
 
@@ -690,9 +690,3 @@ export class PipelineGraph extends React.Component {
         );
     }
 }
-
-export const widgetDescription = new WidgetDescription<Props, PipelineGraph>(PipelineGraph)
-    .widgetEvents('onNodeClick')
-    .hostEvents('trafficStateChanged') 
-    .models('stages', 'selectedStage')
-    .services(); // TODO: Demonstrate working services
