@@ -44,6 +44,17 @@ export enum TrafficState {
     green = 'green',
 }
 
+/**
+ * PipelineGraph widget
+ * 
+ * This is a doc comment that came from source. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at 
+ * interdum est. Donec lobortis mi nisi, vel ultrices purus tempor ac. In euismod magna libero, eget egestas purus 
+ * malesuada a. 
+ * 
+ * Fusce sit amet orci massa. Nulla at congue sapien. Nam semper risus non dictum ornare. Nam tempor volutpat mauris vel
+ * ullamcorper. Praesent lobortis massa vitae risus bibendum sollicitudin. Nam non nisi condimentum, facilisis eros id,
+ * bibendum tellus. Aenean nec ullamcorper mi. In feugiat aliquet mauris, nec condimentum sem dictum nec. 
+ */
 export class PipelineGraph extends React.Component {
 
     // NB: Declaring state and props here instead of using generic base makes a bunch of things typecheck easier

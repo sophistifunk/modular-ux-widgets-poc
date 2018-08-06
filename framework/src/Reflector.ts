@@ -1,5 +1,10 @@
 import * as fs from './fsPromises';
 
+/**
+ * Base reflector interface. 
+ * 
+ * This is not a meant to be a generic re-usable reflector, it's specific to the task of generating Widget Docs.
+ */
 export interface Reflector {
 
     describeClass(className: string): ClassMirror;
@@ -14,6 +19,14 @@ export interface Mirror {
 
 export interface TypeMirror {
     isComplex(): boolean;
+
+    getId(): number;
+    getName(): string;
+    getKindString(): string;
+
+    hasComment(): boolean;
+    getCommentShortText(): string;
+    getCommentLongText(): string;
 }
 
 export interface InterfaceMirror extends Mirror, TypeMirror {
@@ -104,6 +117,32 @@ class TypedocJSONInterfaceMirrorBase {
 
     isComplex(): boolean {
         return true;
+    }
+
+    getId(): number {
+        return this.typeDesc.id;
+    }
+
+    getName(): string {
+        return this.typeDesc.name;
+    }
+
+    getKindString(): string {
+        return this.typeDesc.kindString;
+    }
+
+    hasComment(): boolean {
+        return !!this.typeDesc.comment;
+    }
+
+    getCommentShortText(): string {
+        const comment = this.typeDesc.comment;
+        return comment && comment.shortText || '';
+    }
+
+    getCommentLongText(): string {
+        const comment = this.typeDesc.comment;
+        return comment && comment.text || '';
     }
 
     propertyNames(): Array<string> {

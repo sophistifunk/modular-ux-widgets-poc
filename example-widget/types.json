@@ -368,6 +368,10 @@
 						"isExported": true,
 						"isExternal": true
 					},
+					"comment": {
+						"shortText": "PipelineGraph widget",
+						"text": "This is a doc comment that came from source. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at\ninterdum est. Donec lobortis mi nisi, vel ultrices purus tempor ac. In euismod magna libero, eget egestas purus\nmalesuada a.\n\nFusce sit amet orci massa. Nulla at congue sapien. Nam semper risus non dictum ornare. Nam tempor volutpat mauris vel\nullamcorper. Praesent lobortis massa vitae risus bibendum sollicitudin. Nam non nisi condimentum, facilisis eros id,\nbibendum tellus. Aenean nec ullamcorper mi. In feugiat aliquet mauris, nec condimentum sem dictum nec.\n"
+					},
 					"typeParameter": [
 						{
 							"id": 566,
@@ -450,7 +454,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 53,
+									"line": 64,
 									"character": 44
 								}
 							],
@@ -496,7 +500,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 51,
+									"line": 62,
 									"character": 9
 								}
 							],
@@ -584,7 +588,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 50,
+									"line": 61,
 									"character": 9
 								}
 							],
@@ -610,7 +614,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 53,
+									"line": 64,
 									"character": 17
 								}
 							],
@@ -651,7 +655,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 71,
+									"line": 82,
 									"character": 22
 								}
 							]
@@ -695,7 +699,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 84,
+									"line": 95,
 									"character": 29
 								}
 							]
@@ -725,7 +729,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 80,
+									"line": 91,
 									"character": 24
 								}
 							]
@@ -851,7 +855,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 628,
+									"line": 639,
 									"character": 23
 								}
 							]
@@ -901,7 +905,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 76,
+									"line": 87,
 									"character": 25
 								}
 							]
@@ -935,7 +939,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 642,
+									"line": 653,
 									"character": 10
 								}
 							],
@@ -1024,7 +1028,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 232,
+									"line": 243,
 									"character": 34
 								}
 							]
@@ -1108,7 +1112,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 467,
+									"line": 478,
 									"character": 39
 								}
 							]
@@ -1156,7 +1160,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 137,
+									"line": 148,
 									"character": 26
 								}
 							]
@@ -1217,7 +1221,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 216,
+									"line": 227,
 									"character": 37
 								}
 							]
@@ -1301,7 +1305,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 448,
+									"line": 459,
 									"character": 38
 								}
 							]
@@ -1362,7 +1366,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 519,
+									"line": 530,
 									"character": 22
 								}
 							]
@@ -1411,7 +1415,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 570,
+									"line": 581,
 									"character": 36
 								}
 							]
@@ -1514,7 +1518,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 280,
+									"line": 291,
 									"character": 37
 								}
 							]
@@ -1562,7 +1566,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 178,
+									"line": 189,
 									"character": 28
 								}
 							]
@@ -1824,7 +1828,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 608,
+									"line": 619,
 									"character": 32
 								}
 							]
@@ -1874,7 +1878,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 600,
+									"line": 611,
 									"character": 27
 								}
 							]
@@ -1940,7 +1944,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 124,
+									"line": 135,
 									"character": 25
 								}
 							]
@@ -2042,7 +2046,7 @@
 							"sources": [
 								{
 									"fileName": "PipelineGraph.tsx",
-									"line": 498,
+									"line": 509,
 									"character": 20
 								}
 							]
@@ -3039,7 +3043,7 @@
 					"sources": [
 						{
 							"fileName": "PipelineGraph.tsx",
-							"line": 47,
+							"line": 58,
 							"character": 26
 						}
 					],

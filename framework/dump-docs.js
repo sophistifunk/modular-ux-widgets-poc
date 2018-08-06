@@ -13,6 +13,9 @@ Promise.all([typePromise, descPromise])
     .then(([reflector, widgetDescription]) => new doc.basicDocGenerator(reflector, widgetDescription))
     .then(docGenerator => {
         console.log(docGenerator.debug());
+        console.log('------------------------------------------------------------------------------------');
+        console.log(docGenerator.generate());
+        console.log('------------------------------------------------------------------------------------');
         if (docGenerator.warnings.length) {
             console.error('Warning:\n * ' + docGenerator.warnings.join('\n * '));
         }
