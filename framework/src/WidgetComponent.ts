@@ -42,13 +42,13 @@ export interface WidgetDescription {
      */
     services: Array<string>;
 
-    /**
-     * Names of the React properties for static assets
-     */
-    assets: Array<string>;
+    // /**
+    //  * Names of the React properties for static assets
+    //  */
+    // assets: Array<string>;
 }
 
-function ensureArray(input:any):Array<any> {
+function ensureArray<T>(input:any):Array<T> {
     if (Array.isArray(input)) {
         return input;
     }
@@ -65,11 +65,11 @@ export function parseWidgetDescription(input: any): WidgetDescription {
         throw new Error('parseWidgetDescription: input missing widgetClass prop');
     }
 
-    const widgetClass = input.widgetClass;
-    const widgetEvents = ensureArray(input.widgetEvents);
-    const hostEvents = ensureArray(input.hostEvents);
-    const models = ensureArray(input.models);
-    const services = ensureArray(input.services);
+    const widgetClass:string = input.widgetClass;
+    const widgetEvents:Array<string> = ensureArray<string>(input.widgetEvents);
+    const hostEvents:Array<string> = ensureArray<string>(input.hostEvents);
+    const models:Array<string> = ensureArray<string>(input.models);
+    const services:Array<string> = ensureArray<string>(input.services);
 
     return {
         widgetClass,
@@ -77,5 +77,5 @@ export function parseWidgetDescription(input: any): WidgetDescription {
         hostEvents,
         models,
         services
-    };
+    } as WidgetDescription;
 }
