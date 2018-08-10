@@ -17,11 +17,35 @@ export interface UXWidget<T extends WidgetProps> {
 }
 
 export interface WidgetDescription {
+    /**
+     * The name of the Widget's React Component class
+     */
     widgetClass: string;
+
+    /**
+     * Names of the React properties for Widget Events
+     */
     widgetEvents: Array<string>;
+
+    /**
+     * Names of the React properties for Host Events
+     */
     hostEvents: Array<string>;
+
+    /**
+     * Names of the React properties for Data Model objects
+     */
     models: Array<string>;
+
+    /**
+     * Names of the React properties for required Service objects
+     */
     services: Array<string>;
+
+    /**
+     * Names of the React properties for static assets
+     */
+    assets: Array<string>;
 }
 
 function ensureArray(input:any):Array<any> {
