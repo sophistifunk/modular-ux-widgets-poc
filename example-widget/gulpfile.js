@@ -6,10 +6,7 @@ const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const yaml = require('gulp-yaml');
 
-const { createDistPackage } = require('./src/framework/distPackage');
-
 const tsProject = ts.createProject('tsconfig.json');
-const tsProjectFW = ts.createProject('tsconfig.json');
 
 gulp.task('clean', () =>
     del('dist')
@@ -22,17 +19,11 @@ gulp.task("ts", () =>
         .pipe(gulp.dest("./dist/lib"))
 );
 
-// Compile the framework code - TODO: Get framework code from a module
-gulp.task("ts-framework", () =>
-    gulp.src("./src/framework/**/*.{ts,tsx}")
-        .pipe(tsProjectFW())
-        .pipe(gulp.dest("./dist/framework"))
-);
-
 // Create the inner package.json within /dist for publishing
-gulp.task('make-dist-package', () =>
-    createDistPackage('./package.json', './dist/package.json')
-);
+gulp.task('make-dist-package', () => {
+    const { createDistPackage } = require('framework/build/distPackage');
+    return createDistPackage('./package.json', './dist/package.json')
+});
 
 // This compiles the scss to a single /dist/styles/css/main.css for hosts that don't want to compile the css
 gulp.task('compile-sass', () =>
@@ -61,7 +52,7 @@ gulp.task('i18n', () =>
 );
 
 // All the tasks we can do in parallel after clean, before make-dist-package
-gulp.task('build-all', ['ts', 'ts-framework', 'compile-sass', 'copy-sass', 'copy-assets', 'i18n']);
+gulp.task('build-all', ['ts', 'compile-sass', 'copy-sass', 'copy-assets', 'i18n']);
 
 // Main sequence for clean-building /dist ready for publish
 gulp.task('dist', done =>

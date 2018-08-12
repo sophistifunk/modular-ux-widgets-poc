@@ -29,6 +29,7 @@
     "@imeredith/es-extensions-api": "^0.0.1"
   },
   "dependencies": {
-    "@imeredith/es-extensions-api": "0.0.3"
+    "@imeredith/es-extensions-api": "0.0.3",
+    "framework": "file:../framework/dist"
   }
 }

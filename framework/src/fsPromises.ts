@@ -1,10 +1,12 @@
 // Quick re-impl of (the subset we care about of) fs.promises from node 10
 
-const fs = require('fs');
+import * as fs from 'fs';
 
-function readFile(sourceFilePath, options) {
+// TODO: use better types instead of all these anys
+
+export function readFile(sourceFilePath:string, options: any): Promise<any> {
     return new Promise((resolve, reject) => {
-        fs.readFile(sourceFilePath, options, (err, data) => {
+        fs.readFile(sourceFilePath, options, (err:any, data:any) => {
             if (err) {
                 reject(err);
             }
@@ -15,9 +17,9 @@ function readFile(sourceFilePath, options) {
     });
 }
 
-function writeFile(destFilePath, data, options) {
+export function writeFile(destFilePath:string, data:any, options:any): Promise<any> {
     return new Promise((resolve, reject) => {
-        fs.writeFile(destFilePath, data, options, (err) => {
+        fs.writeFile(destFilePath, data, options, (err:any) => {
             if (err) {
                 reject(err);
             }
@@ -29,4 +31,3 @@ function writeFile(destFilePath, data, options) {
     });
 }
 
-module.exports = { readFile, writeFile }

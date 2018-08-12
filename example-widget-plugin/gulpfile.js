@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const del = require('del');
 const ts = require("gulp-typescript");
 const runSequence = require('run-sequence');
-const { createDistPackage } = require('./src/framework/distPackage');
+const { createDistPackage } = require('framework/build/distPackage');
 
 var tsProject = ts.createProject('tsconfig.json');
 var tsProjectFW = ts.createProject('tsconfig.json');
