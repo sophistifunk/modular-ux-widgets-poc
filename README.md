@@ -20,7 +20,7 @@ Example use cases:
 ````
 cd framework
 npm i
-gulp dist
+npm run dist
 cd ..
 ````
 
@@ -29,7 +29,7 @@ cd ..
 ````
 cd example-widget
 npm i
-gulp dist
+npm run dist
 cd ..
 ````
 
@@ -37,7 +37,7 @@ cd ..
 ````
 cd example-widget-plugin
 npm i
-gulp dist
+npm run dist
 cd ..
 ````
 
@@ -45,7 +45,7 @@ cd ..
 ````
 cd example-host
 npm i
-npm run start
+npm start
 ````
 
 ## Repository contents
